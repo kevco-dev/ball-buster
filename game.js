@@ -1,7 +1,7 @@
 let emitter;
 let timerText;
 let timerEvent;
-let timeLimit = 30;
+let timeLimit = 1;
 let timerStarted = false;
 let score = 0;
 let currentColor = 0xfa328c;
@@ -94,8 +94,8 @@ class GameOverScene extends Phaser.Scene {
 
     create() {
         this.input.setDefaultCursor('auto');
-        const gameOverText = this.add.text(400, 250, 'Game Over', { font: "48px Arial", fill: "#ffffff" }).setOrigin(0.5);
-        const currentScore = this.add.text(400, 300, `${score} Balls Busted!`, { font: "48px Arial", fill: "#ffffff" }).setOrigin(0.5);
+        const gameOverText = this.add.text(400, 240, 'GAME OVER', { font: "64px Arial", fill: "#fa328c" }).setOrigin(0.5);
+        const currentScore = this.add.text(400, 300, `${score} ${score > 1 ? 'Balls' : 'Ball'} Busted!`, { font: "48px Arial", fill: "#ffffff" }).setOrigin(0.5);
         const buttonBackground = this.add.graphics();
         buttonBackground.fillStyle(0xfa328c, 1);
         buttonBackground.fillRoundedRect(325, 390, 150, 60, 16);
