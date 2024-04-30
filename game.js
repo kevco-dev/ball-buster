@@ -1,7 +1,7 @@
 let emitter;
 let timerText;
 let timerEvent;
-let timeLimit = 1;
+let timeLimit = 30;
 let timerStarted = false;
 let score = 0;
 let currentColor = 0xfa328c;
