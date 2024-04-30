@@ -102,6 +102,7 @@ class GameOverScene extends Phaser.Scene {
         const restartButton = this.add.text(400, 420, 'RESTART', { font: "24px Arial", fill: "#ffffff" }).setOrigin(0.5);
         restartButton.setInteractive();
         restartButton.on('pointerdown', () => {
+            score = 0;
             this.scene.start('GameScene');
         });
     }
