@@ -18,6 +18,20 @@ class GameScene extends Phaser.Scene {
         canvas.style.display = "block";
         canvas.style.border = "2px solid rgb(250,50,140)";
         canvas.style.borderRadius = "1rem"
+        this.input.setDefaultCursor('none');
+        this.customCursor = this.add.graphics();
+        this.customCursor.lineStyle(2, 0xffffff);
+        this.customCursor.beginPath();
+        this.customCursor.moveTo(-10, 0);
+        this.customCursor.lineTo(10, 0);
+        this.customCursor.closePath();
+        this.customCursor.strokePath();
+        this.customCursor.beginPath();
+        this.customCursor.moveTo(0, -10);
+        this.customCursor.lineTo(0, 10);
+        this.customCursor.closePath();
+        this.customCursor.strokePath();
+        this.customCursor.setDepth(9999);
         this.cameras.main.setBackgroundColor('rgb(0,0,14)');
         this.physics.world.setBoundsCollision(true, true, true, true);
         const ball = this.add.circle(400, 300, 25, 0xfa238c);
@@ -64,6 +78,13 @@ class GameScene extends Phaser.Scene {
         });
         scoreText = this.add.text(60, 20, `Score: ${score}`, { font: "24px Arial", fill: "#ffffff" }).setOrigin(0.5);
     }
+
+    update() {
+        const mouseX = this.input.mousePointer.x;
+        const mouseY = this.input.mousePointer.y;
+        this.customCursor.x = mouseX;
+        this.customCursor.y = mouseY;
+    }    
 }
 
 class GameOverScene extends Phaser.Scene {
@@ -72,6 +93,7 @@ class GameOverScene extends Phaser.Scene {
     }
 
     create() {
+        this.input.setDefaultCursor('auto');
         const gameOverText = this.add.text(400, 250, 'Game Over', { font: "48px Arial", fill: "#ffffff" }).setOrigin(0.5);
         const currentScore = this.add.text(400, 300, `${score} Balls Busted!`, { font: "48px Arial", fill: "#ffffff" }).setOrigin(0.5);
         const buttonBackground = this.add.graphics();
